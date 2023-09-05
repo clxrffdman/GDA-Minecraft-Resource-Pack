@@ -19,3 +19,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
         REPO_OWNER: clxrffdman
+        WITH_V: true
