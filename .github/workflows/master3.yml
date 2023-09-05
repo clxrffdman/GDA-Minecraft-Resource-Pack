@@ -11,12 +11,15 @@ jobs:
 
     steps:
     - name: Checkout code
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
       uses: actions/checkout@v2
 
     - name: pull latest and remove old file from repo
       run: |
         git config --global user.name "clxrffdman"
         git config --global user.email "clxrffdman@gmail.com"
+        git config --global user.password $GITHUB_TOKEN
         git config pull.rebase false
         git pull
         rm -f release.zip
@@ -29,7 +32,7 @@ jobs:
 
     - name: Push changes to remote
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
       run: |
         git add -A
         git commit -m "new pack"
