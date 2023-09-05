@@ -28,8 +28,10 @@ jobs:
         exclusions: '*.git* /*node_modules/* .editorconfig'
 
     - name: Push changes to remote
+      env:
+        SPOOKY_TOKEN: ${{ secrets.TOKEN }}
       run: |
         git add -A
         git commit -m "new pack"
-        git remote add origin_with_token https://$TOKEN@github.com/clxrffdman/GDA-Minecraft-Resource-Pack.git
+        git remote add origin_with_token https://$SPOOKY_TOKEN@github.com/clxrffdman/GDA-Minecraft-Resource-Pack.git
         git push --force origin_with_token
