@@ -19,4 +19,3 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
         REPO_OWNER: clxrffdman
-        DEFAULT_BUMP: none
