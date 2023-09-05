@@ -1,4 +1,4 @@
-name: ArchivalZip
+name: Archive and Deploy
 
 on:
   push:
@@ -22,16 +22,30 @@ jobs:
         rm -f release.zip
 
     - name: Archive Release
-      uses: thedoctor0/zip-release@master
+      run: |
+        zip -r release.zip .
+      working-directory: ${{ github.workspace }}
+    
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
       with:
-        filename: 'release.zip'
-        exclusions: '*.git* /*node_modules/* .editorconfig'
+        name: release-artifact
+        path: release.zip
 
-    - name: Push changes to remote
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+    - name: Push changes to main
       run: |
         git add -A
-        git commit -m "new pack"
-        git remote add origin_with_token https://$GITHUB_TOKEN@github.com/clxrffdman/GDA-Minecraft-Resource-Pack.git
-        git push origin_with_token
+        git commit -m "Add release.zip"
+        git push origin main
+
+    - name: Download Artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: release-artifact
+        path: .
+
+    - name: Push changes with release.zip to main
+      run: |
+        git add -A
+        git commit -m "Add release.zip"
+        git push origin main
