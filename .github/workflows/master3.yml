@@ -29,9 +29,9 @@ jobs:
 
     - name: Push changes to remote
       env:
-        PAT_TOKEN: ${{ secrets.TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
       run: |
         git add -A
         git commit -m "new pack"
-        git remote add origin_with_token https://$PAT_TOKEN@github.com/clxrffdman/GDA-Minecraft-Resource-Pack.git
-        git push --force origin_with_token
+        git remote add origin_with_token https://$GITHUB_TOKEN@github.com/clxrffdman/GDA-Minecraft-Resource-Pack.git
+        git push origin_with_token
