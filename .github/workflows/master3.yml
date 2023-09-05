@@ -1,4 +1,4 @@
-name: Archive and Deploy
+name: ArchivalZip
 
 on:
   push:
@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        TOKEN: ${{ secrets.TOKEN }}
 
     - name: pull latest and remove old file from repo
       run: |
@@ -22,30 +24,11 @@ jobs:
         rm -f release.zip
 
     - name: Archive Release
-      run: |
-        zip -r release.zip .
-      working-directory: ${{ github.workspace }}
-    
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+      uses: thedoctor0/zip-release@master
       with:
-        name: release-artifact
-        path: release.zip
+        filename: 'release.zip'
+        exclusions: '*.git* /*node_modules/* .editorconfig'
 
-    - name: Push changes to main
-      run: |
-        git add -A
-        git commit -m "Add release.zip"
-        git push origin main
-
-    - name: Download Artifact
-      uses: actions/download-artifact@v2
+    - uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        name: release-artifact
-        path: .
-
-    - name: Push changes with release.zip to main
-      run: |
-        git add -A
-        git commit -m "Add release.zip"
-        git push origin main
+        commit_message: new pack!
