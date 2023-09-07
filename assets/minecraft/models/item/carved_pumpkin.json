@@ -6,6 +6,6 @@
     
     "overrides": [
      {"predicate": {"custom_model_data":1}, "model": "block/custom/chef"},
-     {"predicate": {"custom_model_data":2}, "model": "block/custom/pyorohat"}
+     {"predicate": {"custom_model_data":2}, "model": "block/custom/calextest"}
     ]
    }
