@@ -7,6 +7,7 @@
     "overrides": [
      {"predicate": {"custom_model_data":1}, "model": "block/custom/chef"},
      {"predicate": {"custom_model_data":2}, "model": "block/custom/calextest"},
-     {"predicate": {"custom_model_data":3}, "model": "block/custom/alchemist"}
+     {"predicate": {"custom_model_data":3}, "model": "block/custom/alchemist"},
+     {"predicate": {"custom_model_data":4}, "model": "block/custom/warrior"}
     ]
    }
