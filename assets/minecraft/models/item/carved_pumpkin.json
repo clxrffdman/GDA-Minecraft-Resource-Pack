@@ -9,6 +9,7 @@
      {"predicate": {"custom_model_data":2}, "model": "block/custom/calextest"},
      {"predicate": {"custom_model_data":3}, "model": "block/custom/alchemist"},
      {"predicate": {"custom_model_data":4}, "model": "block/custom/warrior"},
-     {"predicate": {"custom_model_data":5}, "model": "block/custom/gasmask"}
+     {"predicate": {"custom_model_data":5}, "model": "block/custom/gasmask"},
+     {"predicate": {"custom_model_data":6}, "model": "block/custom/archer"}
     ]
    }
